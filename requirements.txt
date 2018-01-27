@@ -1,0 +1,12 @@
+Django==1.11.7
+django-import-export==0.5.1
+ipdb==0.8
+requests
+django-admin-honeypot==0.4.0
+django-ajax-selects==1.4.1
+django-crispy-forms==1.6.1
+django-debug-toolbar==1.9.1
+django-suit==0.2.25
+opencv-python
+pyserial
+Pillow

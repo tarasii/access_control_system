@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/user/rfid/startall.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=rfid srv
+Name=rfid srv
+Comment[en_US]=
+Comment=

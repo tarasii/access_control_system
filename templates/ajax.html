@@ -1,0 +1,84 @@
+{% load admin_urls %}
+{% if is_ajax %}
+    <table style="{% if ajax_action == "Accept" %}background: lightgreen;{% elif ajax_action == "Decline" %}background: lightsalmon;{% else %}background: lightblue;{% endif %}">
+        <tr>
+            <th style="text-align: left;">Date:</th>
+            <td>{{ ajax_datetime|date:'Y-m-d' }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Time:</th>
+            <td>{{ ajax_datetime|date:'H:i:s' }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Card:</th>
+            <td><a target="_blank" href="{% url ajax_card_meta|admin_urlname:'change' ajax_card_obj.id  %}">{{ ajax_card }}</a></td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Room:</th>
+            <td>{{ ajax_grp }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Max count:</th>
+            <td>{{ ajax_max_cnt }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Avaible:</th>
+            <td>{{ ajax_avaible }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Direction:</th>
+            <td>{{ ajax_dir }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Action:</th>
+            <td>{{ ajax_action }}</td>
+        </tr>
+    </table>
+        <a target="_blank" href="{% url 'stat' %}">Statistics</a>
+    <table>
+        <tr>
+            <th>Room</th>
+            <th>Count</th>
+        </tr>
+        {% for grp, cnt in ajax_stat %}
+            <tr>
+                <td>{{ grp }}</td>
+                <td>{{ cnt }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var ping_tm = null;
+
+                function _ping() {
+                    $.get('', function (result) {
+                        clearTimeout(ping_tm);
+                        $("#val").html(result)
+                        ping_tm = setTimeout(_ping, 1000);
+                    })
+                }
+                _ping();
+            });
+        </script>
+        <style>
+            table {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="val"></div>
+    </body>
+    </html>
+{% endif %}
