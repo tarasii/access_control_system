@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/google-chrome --start-fullscreen --disable-session-crashed-bubble --disable-infobars  127.0.0.1:8000
+Exec=/snap/bin/chromium --start-fullscreen --disable-session-crashed-bubble --disable-infobars  127.0.0.1:8000
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

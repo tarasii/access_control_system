@@ -1,5 +1,6 @@
 {% load admin_urls %}
 {% if is_ajax %}
+<div id="column1">
     <table style="{% if ajax_action == "Accept" %}background: lightgreen;{% elif ajax_action == "Decline" %}background: lightsalmon;{% else %}background: lightblue;{% endif %}">
         <tr>
             <th style="text-align: left;">Date:</th>
@@ -35,6 +36,8 @@
         </tr>
     </table>
         <a target="_blank" href="{% url 'stat' %}">Statistics</a>
+</div>
+<div id="column2">
     <table>
         <tr>
             <th>Room</th>
@@ -47,6 +50,7 @@
             </tr>
         {% endfor %}
     </table>
+</div>
 {% else %}
     <!doctype html>
     <html lang="en">
@@ -75,6 +79,8 @@
             th, td {
                 padding: 3px;
             }
+            body {font-size:48px}
+            div#column1 {float:left}
         </style>
     </head>
     <body>
